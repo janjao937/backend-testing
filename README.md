@@ -1,4 +1,4 @@
-#Programming setup
+# Programming setup
 - create database in Mysql like schema.sql
 - create .env file
 <br />

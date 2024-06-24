@@ -1,0 +1,80 @@
+==Item==	
+id	uuid()
+name	    VARCHAR(36)
+detail	    VARCHAR(255)
+price	    Decimal(19,4)
+startDate   Date()
+exDate	    Date()
+
+==promotion==	
+id	        uuid()
+item_Id	    uuid()
+discount	Decimal(19,4)
+startDate	Date()
+exDate	    Date()
+==
+ใช้เก็บ item ที่จัดโปรโมชั่น
+โดยจะมี discount ไว้เป็นราคาที่เอาไว้ลด
+==
+
+==bundle==	
+id	        uuid()
+price	    Decimal(19,4)
+startDate	Date()
+exDate	    Date()
+==
+เก็บราคาของ bundle โดยจะอ้างอิงจาก Package ที่มี bundle_id เดียวกัน
+==
+
+==Package==	
+id	uuid()
+bundle_id	uuid()
+item_Id	    uuid()
+==
+ไว้ใช้เก็บว่าแต่ละ bundle มีสินค้าอะไรบ้าง
+เก็บ bundle_id เพื่ออ้างอิงถึง bundle ที่ item อยู่
+==
+
+==GameCode==	
+id	        uuid()
+code        VARCHAR(255)
+==
+เก็บ Code ที่สามารถแลกไอเท็มได้
+==
+
+==Item_MatchCode==	
+id	        uuid()
+gameCode_id	uuid()
+item_Id	    uuid()
+==
+เก็บไอเท็มที่มี Code ไว้แลกแล้ว
+เก็บ gameCode_id เพื่อที่ 1 gameCode_id สามารถแลกได้หลายไอเท็ม
+==
+
+
+=== ขั้นตอนโดยสังเขป ===
+ซื้อCode 
+-สร้าง row ใน GameCode และเก็บ Code สำหรับแลกไอเท็ม
+-เก็บ item_id กับ gameCode_id ลงใน Item_MatchCode
+-เอาโค็ดที่ได้จากเกมโห้ไปให้ User 
+
+promotion
+-เก็บ item_id ที่จะลดราคาลงใน promotion 
+-exDate วันสิ้นสุดโปรโมชั่น
+-startDate วันที่เริมโปรโมชั่น
+
+จัด bundle 
+- สร้าง row bundle 
+- เอา item ไปเก็บใน package โดยใช้ bundle_id เดียวกัน
+
+ซื้อ bundle
+-เอา bundle_id ไปหา item ใน package
+-โดยจะใช้ราคา ของ bundle แทน Item
+-สร้าง row ใน GameCode และเก็บ Code สำหรับแลกไอเท็ม
+-เอา item_Id ใน package ไปใส่ใน Item_MatchCode โดยใช้ gameCode_id เดียวกัน
+-เอาโค็ดที่ได้จากเกมโห้ไปให้ User
+
+
+	
+
+

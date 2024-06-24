@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "2e89ed27-73bc-4c22-8e43-8cb5b4fd189b",
+		"name": "simple_crypto_wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17633802"
+	},
+	"item": [
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//clear cookie",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"username\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/login/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserExchangeCrypto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"toUserId\":\"id user ที่รับ\",\r\n    \"fromCrypto_id\":\"id crypto ที่จะแลก\",\r\n    \"transferBalance\":5,//จำนวนเหร๊ยญที่จะแลก\r\n    \"exToCrypto_id\":\"a874503b-2f12-11ef-a85d-0250989ff1cd\"//id crypto สกุลของผู้รับ\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/user/exchange",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"user",
+						"exchange"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserTransferCrypto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"toUserId\":\"id user ที่รับ\",\r\n    \"crypto_id\":\"a874503b-2f12-11ef-a85d-0250989ff1cd\",//id crypto ที่จะแลกเปลี่ยน\r\n    \"transferBalance\":20//จำนวนเหรียญที่แลก\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/user/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"user",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserGetCoin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"crypto_id\":\"1dc81d05-2f24-11ef-a85d-0250989ff1cd\",//id crypto\r\n    \"addBalance\":25//จำนวนเหร๊ยญที่รับ\r\n    //user id เอาจาก cookie\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/user/get-coin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"user",
+						"get-coin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "adminRegister",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"JaneDoe\",\r\n    \"password\":\"12345asd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"JaneDoe\",\r\n    \"password\":\"12345asd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginAdmin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"JaneDoe\",\r\n    \"password\":\"12345asd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdmingetAllCrypto",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdmingetEditExchangeRate",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cryptoA_id\":\"1dc81d05-2f24-11ef-a85d-0250989ff1cd\",//id crypto ที่จะเปลี่ยน rate\r\n\"newRateA\":0.5,//rate ที่จะเปลี่ยน\r\n\"cryptoB_id\":\"a874503b-2f12-11ef-a85d-0250989ff1cd\"//id crypto ที่เทียบ rate\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/admin/change-rate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"admin",
+						"change-rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdminChangeUserBalance",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userId\":\"ac2f4183-2f02-11ef-a85d-0250989ff1cd\",// user id ที่จะเปลี่ยน\r\n\"crypto_Id\":\"1dc81d05-2f24-11ef-a85d-0250989ff1cd\",//crypto id ที่จะเปลี่ยนในwalletของ user\r\n\"newBalance\":60//จำนวน balance ของเหร๊ยญ\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/admin/edit-user-wallet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"admin",
+						"edit-user-wallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdminAddNewCryptocurrency",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ETH\",//ชื่อ crypto\r\n    \"usdt\":100//จำนวน usdt ต่อ 1 เหร๊ยญ\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/crypto/admin/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crypto",
+						"admin",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

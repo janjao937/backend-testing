@@ -1,0 +1,95 @@
+-Logout
+POST
+PATH:http://localhost:8000/api/auth/logout
+clear cookie
+
+-Register_Admin
+POST
+PATH:http://localhost:8000/api/auth/register/admin
+==REQUEST==
+BODY:{
+    "username":"username",
+    "password":"password"   
+}
+
+-Register_User
+POST
+PATH:http://localhost:8000/api/auth/register/user
+==REQUEST==
+BODY:{
+    "username":"username",
+    "password":"password"   
+}
+
+-Login_Admin
+POST
+PATH:http://localhost:8000/api/auth/login/admin
+==REQUEST==
+BODY:{
+    "username":"username",
+    "password":"password"   
+}
+
+-Login_User
+POST
+PATH:http://localhost:8000/api/auth/login/user
+==REQUEST==
+BODY:{
+    "username":"username",
+    "password":"password"   
+}
+
+
+=== Path ที่ต้อง login/register admin ก่อนเพราะมีการเช็ค jwt ใน cookie ที่ midleware ===
+
+-AdminGetAllCryptoBalance
+GET
+PATH:http://localhost:8000/api/crypto/admin
+
+-AdminEditExChangeRate
+PATCH
+PATH:http://localhost:8000/api/crypto/admin/change-rate
+BODY:{
+    "cryptoA_id":"STRING",  //id crypto ที่จะเปลี่ยน rate
+    "newRateA":0.5,         //rate ที่จะเปลี่ยน
+    "cryptoB_id":"STRING"   //id crypto ที่เทียบ rate
+}
+
+-AdminChangeUserBalance
+PATCH
+PATH:http://localhost:8000/api/crypto/admin/edit-user-wallet
+BODY:{
+    "userId":"STRING",      // user id ที่จะเปลี่ยน
+    "crypto_Id":"STRING",   //crypto id ที่จะเปลี่ยนในwalletของ user
+    "newBalance":60         //จำนวน balance ใหม่ของเหร๊ยญ
+}
+
+-AdminAddNewCryptocurrency
+POST
+PATH:http://localhost:8000/api/crypto/admin/add
+BODY:{
+    "name":"STRING",   //ชื่อ crypto
+    "usdt":100      //จำนวน usdt ต่อ 1 เหร๊ยญ
+}
+
+=== Path ที่ต้อง login/register user ก่อนเพราะมีการเช็ค jwt ใน cookie ที่ midleware ===
+-UserExchangeCrypto
+POST
+PATH:http://localhost:8000/api/crypto/user/exchange
+BODY:{
+    "toUserId":"ed63460e-308c-11ef-a85d-0250989ff1cd",      //id user ที่จะทำการแลกเปลี่ยน    
+    "fromCrypto_id":"1dc81d05-2f24-11ef-a85d-0250989ff1cd", //id crypto สกุลของผู้แลก   
+    "transferBalance":5,                                    //จำนวนเหร๊ยญที่ต้องการแลก
+    "exToCrypto_id":"a874503b-2f12-11ef-a85d-0250989ff1cd"  //id crypto ของผู้รับ
+}
+
+-UserTransferCrypto
+POST
+PATH:http://localhost:8000/api/crypto/user/transfer
+BODY:{
+    "toUserId":"ed63460e-308c-11ef-a85d-0250989ff1cd",      //id user ที่จะทำการแลกเปลี่ยน 
+    "crypto_id":"a874503b-2f12-11ef-a85d-0250989ff1cd",     //id crypto สกุลที่จะแลกเปลี่ยน  
+    "transferBalance":20                                    //จำนวนเหร๊ยญที่ต้องการแลก
+}
+
+
